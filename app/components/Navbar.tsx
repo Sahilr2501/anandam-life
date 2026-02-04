@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative h-14 w-auto">
+            <div className="relative h-15 w-auto">
               <Image
                 src={Logo}
                 alt="Anandam Life logo"
