@@ -178,9 +178,11 @@ export default function BlogsPage() {
             Mental Health Resources That Empower
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-[#7A4A1A] sm:text-base">
-            Explore articles, videos, worksheets, meditations, and stories
-            designed to support your mental wellness journey. All resources are
-            created by our team or carefully curated for their practical value.
+            Our work is backed by a blend of modern psychology and ancient
+            wisdom. Explore articles, therapeutic frameworks, expert videos,
+            downloadable PDFs, guided meditations, and curated resources to
+            deepen your understanding of mental health. We aim to make mental
+            wellness knowledge accessible and impactful.
           </p>
         </div>
       </section>

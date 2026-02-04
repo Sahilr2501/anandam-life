@@ -12,10 +12,10 @@ export default function PersonalCounselingPage() {
             A Safe Space for Your Inner World
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-[#7A4A1A] sm:text-base">
-            For the moments when your thoughts feel loud, your heart feels
-            heavy, or life feels like it&apos;s moving faster than you can
-            process—personal counseling offers a gentle, confidential space to
-            pause and realign.
+            Drawing inspiration from ancient Vedic wisdom, ANANDAM offers
+            personalized counseling for the moments when your thoughts feel loud,
+            your heart feels heavy, or life feels like it&apos;s moving faster than
+            you can process—a gentle, confidential space to pause and realign.
           </p>
           <div className="mt-4 text-xs text-[#7A4A1A]">
             <Link

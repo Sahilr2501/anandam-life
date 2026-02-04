@@ -88,6 +88,50 @@ export default function InternshipsCareersPage() {
         </div>
       </section>
 
+      {/* Internships: Gain Practical Experience */}
+      <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-semibold text-[#2F1500] mb-6">
+          Internships: Gain Practical Experience in Mental Health & Counseling
+        </h2>
+        <p className="text-[#7A4A1A] text-base leading-relaxed mb-6">
+          Are you passionate about psychology, counseling, or mental wellness?
+          ANANDAM&apos;s Internship Program provides hands-on experience for
+          students and professionals looking to deepen their understanding of
+          mental health counseling, coaching, and therapy techniques.
+        </p>
+        <p className="text-[#7A4A1A] text-base leading-relaxed mb-4">
+          As an ANANDAM Intern, you will:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-[#7A4A1A] mb-8">
+          <li>Gain exposure to real-life counseling scenarios</li>
+          <li>Learn assessment tools and intervention techniques</li>
+          <li>Work alongside experienced professionals</li>
+          <li>Understand different therapeutic approaches</li>
+          <li>Develop essential communication and counseling skills</li>
+        </ul>
+        <p className="text-[#7A4A1A] text-base leading-relaxed mb-4">
+          Our structured internship is ideal for psychology students, aspiring
+          counselors, and mental health advocates who want to apply theory to
+          practice and build confidence in their skills.
+        </p>
+        <div className="rounded-2xl bg-[#FFF7EB] border border-[#FFCE99]/40 p-6 mt-8">
+          <h3 className="text-lg font-semibold text-[#2F1500] mb-4">
+            What We Expect from You
+          </h3>
+          <ul className="list-disc pl-6 space-y-2 text-[#7A4A1A]">
+            <li>A genuine interest in mental health and a willingness to learn</li>
+            <li>Respect for client confidentiality and ethical guidelines</li>
+            <li>Professional behavior and a commitment to punctuality</li>
+            <li>Active participation in sessions, discussions, and feedback</li>
+            <li>Openness to constructive criticism and a growth mindset</li>
+          </ul>
+        </div>
+        <p className="text-[#2F1500] font-medium mt-6">
+          Join our internship program and take the first step toward a fulfilling
+          career in mental health.
+        </p>
+      </section>
+
       {/* Internship Program Details */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-10">
@@ -373,6 +417,38 @@ export default function InternshipsCareersPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contract / Paid Research */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-[#FFCE99]/40 sm:p-8">
+          <h2 className="text-2xl font-semibold text-[#2F1500] mb-4">
+            Contract / Paid Research: Collaborate With ANANDAM for In-Depth Insights
+          </h2>
+          <p className="text-[#7A4A1A] text-base leading-relaxed mb-6">
+            At ANANDAM, we actively engage in psychological research, mental health
+            studies, and counseling innovations. If you&apos;re a researcher,
+            institution, or professional looking to collaborate, we offer:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-[#7A4A1A] mb-6">
+            <li><strong className="text-[#2F1500]">Paid Research & Consultancy</strong> – Partner with us for in-depth studies on psychology, counseling, and mental health trends.</li>
+            <li><strong className="text-[#2F1500]">Workshops & Expert Talks</strong> – Conduct training sessions and discussions with our expert counselors.</li>
+            <li><strong className="text-[#2F1500]">Customized Mental Health Reports</strong> – Gain insights into emotional wellness, stress management, and workplace well-being.</li>
+          </ul>
+          <p className="text-[#7A4A1A] text-base leading-relaxed mb-4">
+            For inquiries about research projects, consulting, or collaboration
+            opportunities, feel free to reach out.
+          </p>
+          <p className="font-medium text-[#2F1500] mb-4">
+            Let&apos;s work together to make mental health knowledge accessible and impactful.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#FF9644] to-[#FFCE99] px-6 py-3 text-sm font-semibold text-[#562F00] shadow-md hover:shadow-lg hover:scale-[1.02] transition-all"
+          >
+            Get in Touch for Research Collaboration
+          </Link>
         </div>
       </section>
     </main>
