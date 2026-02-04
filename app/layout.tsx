@@ -11,12 +11,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Anandah | Happiness Counseling & Psychotherapy",
-  description: "Anandah offers personalized mental wellness services rooted in ancient wisdom and modern psychology. Professional counseling, therapy, and holistic mental health support for individuals, couples, and families.",
+  title: "ANANDAM | Happiness Counseling & Psychotherapy",
+  description: "ANANDAM offers personalized mental wellness services rooted in ancient wisdom and modern psychology. Professional counseling, therapy, and holistic mental health support for individuals, couples, and families.",
   keywords: ["counseling", "psychotherapy", "mental wellness", "therapy", "anxiety", "depression", "couples therapy", "career counseling", "life coaching"],
-  authors: [{ name: "Anandah" }],
-  creator: "Anandah",
-  publisher: "Anandah",
+  authors: [{ name: "ANANDAM" }],
+  creator: "ANANDAM",
+  publisher: "ANANDAM",
   formatDetection: {
     email: false,
     address: false,
@@ -25,25 +25,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://anandah.com",
-    title: "Anandah | Happiness Counseling & Psychotherapy",
+    url: "https://anandam.com",
+    title: "ANANDAM | Happiness Counseling & Psychotherapy",
     description: "Personalized mental wellness rooted in ancient wisdom and modern psychology.",
-    siteName: "Anandah",
+    siteName: "ANANDAM",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Anandah - Happiness Counseling & Psychotherapy",
+        alt: "ANANDAM - Happiness Counseling & Psychotherapy",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anandah | Happiness Counseling & Psychotherapy",
+    title: "ANANDAM | Happiness Counseling & Psychotherapy",
     description: "Personalized mental wellness rooted in ancient wisdom and modern psychology.",
     images: ["/og-image.png"],
-    creator: "@anandah",
+    creator: "@anandam",
   },
   robots: {
     index: true,
@@ -55,15 +55,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    // Add your verification codes here when available
-    // google: "google-site-verification-code",
-    // yandex: "yandex-verification-code",
-    // yahoo: "yahoo-site-verification",
-    // other: {
-    //   me: ["your-email@example.com", "your-link"],
-    // },
   },
 };
 
