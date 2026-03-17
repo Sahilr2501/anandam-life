@@ -6,7 +6,7 @@ const TOOLS = [
     subtitle: "Personality Quiz",
     desc: "Discover your core personality traits, strengths, and natural ways of thinking, feeling, and relating to others.",
     icon: "🧭",
-    formUrl: "#", // Replace with Google Forms/Typeform URL
+    formUrl: "/tools/PersonalityQuiz", // Replace with Google Forms/Typeform URL
     insights: "Understand your unique personality blueprint and how it shapes your daily life.",
   },
   {
@@ -14,7 +14,7 @@ const TOOLS = [
     subtitle: "Burnout & Stress Assessment",
     desc: "A gentle check-in to recognize signs of emotional exhaustion, burnout, and chronic stress before they spiral.",
     icon: "💭",
-    formUrl: "#", // Replace with Google Forms/Typeform URL
+    formUrl: "/tools/Burnout&StressQuiz", // Replace with Google Forms/Typeform URL
     insights: "Identify early warning signs and learn practical ways to restore your emotional energy.",
   },
   {
@@ -22,7 +22,7 @@ const TOOLS = [
     subtitle: "Connection & Attachment Style",
     desc: "Explore your relationship patterns, attachment style, and how you show up in romantic and close friendships.",
     icon: "💕",
-    formUrl: "#", // Replace with Google Forms/Typeform URL
+    formUrl: "/tools/RelationshipPatternChecker", // Replace with Google Forms/Typeform URL
     insights: "Understand your relationship blueprint and discover healthier ways to connect.",
   },
   {
@@ -30,7 +30,7 @@ const TOOLS = [
     subtitle: "Purpose & Alignment Assessment",
     desc: "Clarify what work environments, roles, and values align with your strengths, interests, and sense of purpose.",
     icon: "🎯",
-    formUrl: "#", // Replace with Google Forms/Typeform URL
+    formUrl: "/tools/CareerFitExplorerQuiz", // Replace with Google Forms/Typeform URL
     insights: "Find clarity on career direction and work that feels meaningful to you.",
   },
   {
@@ -38,7 +38,7 @@ const TOOLS = [
     subtitle: "Emotional Patterns & Triggers",
     desc: "Track your daily moods, emotional patterns, and triggers over time to build self-awareness and notice trends.",
     icon: "📅",
-    formUrl: "#", // Replace with Google Forms/Typeform URL
+    formUrl: "/tools/MoodTrackerCalendar", // Replace with Google Forms/Typeform URL
     insights: "Spot patterns in your emotional landscape and identify what supports or drains you.",
   },
   {
@@ -46,7 +46,7 @@ const TOOLS = [
     subtitle: "Self-Worth & Inner Voice Assessment",
     desc: "Reflect on your relationship with yourself, inner critic, and self-compassion practices.",
     icon: "🪞",
-    formUrl: "#", // Replace with Google Forms/Typeform URL
+    formUrl: "/tools/SelfEsteemMirror", // Replace with Google Forms/Typeform URL
     insights: "Understand your inner dialogue and build a kinder relationship with yourself.",
   },
 ];

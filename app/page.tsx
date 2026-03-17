@@ -6,8 +6,6 @@ export default function Home() {
     <main className="bg-[#FFFDF1] text-[#562F00]">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-
-
         <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4 py-20 sm:px-6 lg:flex-row lg:items-center lg:py-24 lg:px-8">
           <div className="max-w-xl space-y-6">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-[#2F1500] sm:text-4xl lg:text-5xl">
@@ -138,26 +136,32 @@ export default function Home() {
               {
                 title: "Individual Counseling",
                 desc: "Anxiety, overthinking, burnout, low mood, or just feeling stuck.",
+                href: "/services/PersonalCounseling",
               },
               {
                 title: "Couple Therapy",
                 desc: "Rebuild trust, deepen connection, or navigate conflict with care.",
+                href: "/services/CoupleCounseling",
               },
               {
                 title: "Career Guidance",
                 desc: "Clarity for students & professionals on purpose, strengths & next steps.",
+                href: "/services/CareerCounseling",
               },
               {
                 title: "Life Coaching",
                 desc: "Move from surviving to thriving with aligned goals and accountability.",
+                href: "/services/LifeCoaching",
               },
               {
                 title: "School / Parental Counseling",
                 desc: "Support for children, teens & parents through changing emotional needs.",
+                href: "/services/SchoolCounseling",
               },
               {
                 title: "Corporate Programs",
                 desc: "Workplace mental wellness, leadership labs, and emotional skills at work.",
+                href: "/services/CorporateTraining",
               },
             ].map((item) => (
               <div
@@ -171,19 +175,15 @@ export default function Home() {
                   <p className="mt-3 text-sm text-[#7A4A1A]">{item.desc}</p>
                 </div>
                 <div className="mt-4 text-xs font-semibold text-[#AA5A00]">
-                  <span className="inline-flex items-center gap-1">
-                    Discover more
-                    <span className="transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </span>
+                  <Link href={item.href} className="inline-flex items-center gap-1">
+                    Discover more →
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Free Interactive Tools */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -213,18 +213,22 @@ export default function Home() {
             {
               title: "Personality Quiz",
               desc: "Understand your natural ways of thinking, feeling and relating.",
+              href: "/tools/PersonalityQuiz",
             },
             {
               title: "Mood Journal",
               desc: "Track emotional patterns and triggers with simple daily check-ins.",
+              href: "/tools/MoodTrackerCalendar",
             },
             {
               title: "Anxiety & Stress Level Test",
               desc: "A quick snapshot of how your mind and body are coping right now.",
+              href: "/tools/Burnout&StressQuiz",
             },
             {
               title: "Relationship Compatibility Checker",
               desc: "Explore strengths & growth areas in your romantic or close relationships.",
+              href: "/tools/RelationshipPatternChecker",
             },
           ].map((tool) => (
             <div
@@ -238,167 +242,12 @@ export default function Home() {
                 <p className="mt-3 text-xs text-[#7A4A1A]">{tool.desc}</p>
               </div>
               <button className="mt-4 inline-flex items-center justify-start text-xs font-semibold text-[#AA5A00] hover:text-[#FF9644]">
-                Start now →
+                <Link href={tool.href}>
+                  Start now →
+                </Link>
               </button>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Stories of Change */}
-      <section className="bg-[#1D130D] py-16 text-[#FFF4E2]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold">Stories of Change</h2>
-              <p className="mt-2 text-sm text-[#E6C9A5] max-w-xl">
-                Real people. Real struggles. Real shifts. Faces blurred, names
-                changed—experiences honored.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="flex flex-col rounded-3xl bg-[#2A1A12] p-5 ring-1 ring-white/5"
-              >
-                <div className="aspect-video w-full overflow-hidden rounded-2xl bg-[#0E0A08]">
-                  {/* Placeholder for video thumbnail */}
-                  <div className="flex h-full items-center justify-center text-xs text-[#C2A07D]">
-                    Video testimonial {i} (coming soon)
-                  </div>
-                </div>
-                <p className="mt-4 text-xs uppercase tracking-[0.2em] text-[#E6C9A5]/80">
-                  ANONYMOUS JOURNEY
-                </p>
-                <p className="mt-2 text-sm text-[#F5E4CC]">
-                  &quot;I walked in with constant worry and sleepless nights. I
-                  walked out with language for my emotions, tools for my mind,
-                  and a kinder relationship with myself.&quot;
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Meet Dr. Jani & the Team */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
-          <div className="relative">
-            <div className="h-64 w-full rounded-3xl bg-gradient-to-tr from-[#FF9644]/30 via-[#FFCE99]/40 to-[#FFFDF1] shadow-lg" />
-            <div className="absolute -bottom-6 -right-4 w-40 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-[#FFCE99]/60">
-              <p className="text-xs font-semibold text-[#2F1500]">
-                Gentle. Grounded. Evidence-based.
-              </p>
-              <p className="mt-1 text-[11px] text-[#7A4A1A]">
-                Each conversation is crafted to honor your pace, your story, and
-                your inner wisdom.
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#AA5A00]">
-              YOUR GUIDES
-            </p>
-            <h2 className="mt-2 text-2xl font-semibold text-[#2F1500]">
-              Meet Dr. Jani & the Team
-            </h2>
-            <p className="mt-3 text-sm text-[#7A4A1A]">
-              Rooted in clinical training, enriched by ancient philosophies, and
-              held together with deep human warmth—our team at Anandam believes
-              in meeting you exactly where you are.
-            </p>
-            <p className="mt-3 text-sm text-[#7A4A1A]">
-              From high-achieving professionals to sensitive teenagers, from
-              caregivers to corporate leaders, we support diverse journeys with
-              humility, cultural sensitivity, and respect.
-            </p>
-
-            <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-[#7A4A1A]">
-              <span className="rounded-full bg-[#FFF4E2] px-3 py-1">
-                Ph.D. & clinical expertise
-              </span>
-              <span className="rounded-full bg-[#FFF4E2] px-3 py-1">
-                Integrative & holistic lens
-              </span>
-              <span className="rounded-full bg-[#FFF4E2] px-3 py-1">
-                Trauma-informed & compassionate
-              </span>
-            </div>
-
-            <Link
-              href="/about"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#FF9644] to-[#FFCE99] px-6 py-3 text-sm font-semibold text-[#562F00] shadow-md hover:shadow-lg hover:scale-[1.02] transition-all"
-            >
-              Meet Your Guide
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Insights (Blog) */}
-      <section className="bg-[#FFF7EB] py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold text-[#2F1500]">
-                Featured Insights from ANANDAM
-              </h2>
-              <p className="mt-2 text-sm text-[#7A4A1A] max-w-xl">
-                Short, real-world reflections to help you understand your mind,
-                relationships, and everyday emotional health.
-              </p>
-            </div>
-
-            <Link
-              href="/blogs"
-              className="inline-flex items-center justify-center rounded-full border border-[#FF9644]/60 bg-white px-5 py-2 text-xs font-semibold text-[#AA5A00] hover:bg-[#FFF4E2] transition-colors"
-            >
-              View all blogs
-            </Link>
-          </div>
-
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "How to Identify Burnout?",
-                desc: "It’s more than just feeling tired. Learn to notice the emotional, mental, and physical signs before they spiral.",
-              },
-              {
-                title: "High-Functioning Anxiety: The Invisible Load",
-                desc: "On the outside, you seem fine. Inside, your mind never stops. Here’s what that really feels like.",
-              },
-              {
-                title: "When Relationships Feel Draining",
-                desc: "Why some bonds exhaust you—and how to set gentle but firm emotional boundaries.",
-              },
-            ].map((post) => (
-              <article
-                key={post.title}
-                className="flex flex-col justify-between rounded-3xl bg-white p-5 shadow-sm ring-1 ring-[#FFCE99]/40 hover:-translate-y-1 hover:shadow-md hover:ring-[#FF9644]/70 transition-all"
-              >
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#AA5A00]">
-                    MENTAL WELLNESS
-                  </p>
-                  <h3 className="mt-2 text-base font-semibold text-[#2F1500]">
-                    {post.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-[#7A4A1A]">{post.desc}</p>
-                </div>
-                <Link
-                  href="/blogs"
-                  className="mt-4 text-xs font-semibold text-[#AA5A00] hover:text-[#FF9644]"
-                >
-                  Read full article →
-                </Link>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -486,4 +335,3 @@ export default function Home() {
     </main>
   );
 }
-

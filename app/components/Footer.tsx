@@ -3,7 +3,7 @@ import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-[#FFCE99]/30 bg-[#FFFDF1]">
+    <footer className="border-t border-[#FFCE99]/30 bg-[#FFF7EB] pt-16">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-3">
           {/* Quick Links */}
@@ -40,7 +40,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social Handles */}
+          {/* Social Handles
           <div>
             <h3 className="text-lg font-semibold text-[#562F00] mb-4">
               Social Handles
@@ -99,7 +99,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* WhatsApp / Newsletter / Policies */}
           <div>

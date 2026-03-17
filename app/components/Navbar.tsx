@@ -2,205 +2,309 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+
+// Try different import approaches
+// Option 1: If logo.png is in public/images folder
 import Logo from "@/images/logo.png";
-import { useState } from "react";
+// Option 2: If logo.png is in public folder
+// import Logo from "/logo.png";
+// Option 3: If logo.png is in assets folder
+// import Logo from "@/assets/logo.png";
 
 const services = [
-  { title: "Personal Counseling", slug: "PersonalCounseling" },
-  { title: "Career Counseling", slug: "CareerCounseling" },
-  { title: "Couple Counseling", slug: "CoupleCounseling" },
-  { title: "Family Counseling", slug: "FamilyCounseling" },
-  { title: "Life Coaching", slug: "LifeCoaching" },
-  { title: "Parental Counseling", slug: "ParentalCounseling" },
-  { title: "School Counseling", slug: "SchoolCounseling" },
-  { title: "Virtual Counseling", slug: "VirtualCounseling" },
-  { title: "Corporate Training", slug: "CorporateTraining" },
+  { title: "Personal Counseling", slug: "personal-counseling", description: "Individual support for personal growth" },
+  { title: "Career Counseling", slug: "career-counseling", description: "Navigate your professional journey" },
+  { title: "Couple Counseling", slug: "couple-counseling", description: "Strengthen your relationship" },
+  { title: "Family Counseling", slug: "family-counseling", description: "Build stronger family bonds" },
+  { title: "Life Coaching", slug: "life-coaching", description: "Achieve your life goals" },
+  { title: "Parental Counseling", slug: "parental-counseling", description: "Support for parenting challenges" },
+  { title: "School Counseling", slug: "school-counseling", description: "Academic and social support" },
+  { title: "Virtual Counseling", slug: "virtual-counseling", description: "Online sessions from anywhere" },
+  { title: "Corporate Training", slug: "corporate-training", description: "Workplace wellness solutions" },
 ];
-
-const navItemBaseClasses =
-  "text-base font-medium text-[#562F00] hover:text-[#FF9644] transition-all duration-300 hover:scale-[1.02]";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  }, [pathname]);
+
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="border-b border-[#FFCE99]/20 bg-[#FFFDF1] shadow-sm">
-      <nav className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="relative h-15 w-auto">
-              <Image
-                src={Logo}
-                alt="Anandam Life logo"
-                className="h-full w-auto object-contain drop-shadow-sm"
-                priority
-                width={200}
-                height={59}
-              />
-            </div>
-          </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-white/95 backdrop-blur-sm shadow-sm py-3"
+          : "bg-white py-5"
+          }`}
+      >
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo - Fixed with fallback */}
+            <Link
+              href="/"
+              className="flex items-center shrink-0 group"
+              aria-label="Anandam Life - Home"
+            >
+              {!logoError ? (
+                <div className="relative h-10 w-32 lg:h-12 lg:w-40">
+                  <Image
+                    src={Logo}
+                    alt="Anandam Life"
+                    className="object-contain"
+                    priority
+                    fill
+                    sizes="(max-width: 768px) 128px, 160px"
+                    onError={() => setLogoError(true)}
+                  />
+                </div>
+              ) : (
+                // Fallback text logo if image fails to load
+                <span className="text-xl font-bold text-[#562F00]">
+                  Anandam Life
+                </span>
+              )}
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            <div className="flex items-center space-x-1 bg-white/50 rounded-full px-6 py-2 shadow-inner">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1">
               <Link
                 href="/"
-                className="px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-colors duration-300"
+                className={`px-4 py-2 font-medium transition-colors relative ${isActive("/")
+                  ? "text-[#FF9644]"
+                  : "text-[#562F00] hover:text-[#FF9644]"
+                  }`}
               >
-                <span className={navItemBaseClasses}>Home</span>
+                Home
+                {isActive("/") && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#FF9644] rounded-full" />
+                )}
               </Link>
 
               <Link
                 href="/about"
-                className="px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-colors duration-300"
+                className={`px-4 py-2 font-medium transition-colors relative ${isActive("/about")
+                  ? "text-[#FF9644]"
+                  : "text-[#562F00] hover:text-[#FF9644]"
+                  }`}
               >
-                <span className={navItemBaseClasses}>About Us</span>
+                About
+                {isActive("/about") && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#FF9644] rounded-full" />
+                )}
               </Link>
 
-              <Link
-                href="/internships-careers"
-                className="px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-colors duration-300"
-              >
-                <span className={navItemBaseClasses}>Internships & Careers</span>
-              </Link>
+              {/* Services Dropdown */}
+              <div ref={servicesRef} className="relative">
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className={`px-4 py-2 font-medium transition-colors flex items-center gap-1 relative ${isServicesOpen || pathname.startsWith("/services")
+                    ? "text-[#FF9644]"
+                    : "text-[#562F00] hover:text-[#FF9644]"
+                    }`}
+                  aria-expanded={isServicesOpen}
+                  aria-haspopup="true"
+                >
+                  Services
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""
+                      }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                  {pathname.startsWith("/services") && !isServicesOpen && (
+                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#FF9644] rounded-full" />
+                  )}
+                </button>
 
-              <Link
-                href="/blogs"
-                className="px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-colors duration-300"
-              >
-                <span className={navItemBaseClasses}>Blogs</span>
-              </Link>
+                {isServicesOpen && (
+                  <div className="absolute left-0 top-full mt-2 w-72 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 animate-fadeIn">
+                    <div className="px-4 py-2 border-b border-gray-100">
+                      <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Our Services
+                      </span>
+                    </div>
+
+                    <Link
+                      href="/services"
+                      className="block px-4 py-2.5 text-sm text-[#AA5A00] font-medium hover:bg-orange-50 transition-colors"
+                      onClick={() => setIsServicesOpen(false)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span>View all services</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </Link>
+
+                    <div className="border-t border-gray-100 my-2"></div>
+
+                    <div className="max-h-96 overflow-y-auto">
+                      {services.map((service) => (
+                        <Link
+                          key={service.slug}
+                          href={`/services/${service.slug}`}
+                          className="block px-4 py-2.5 hover:bg-gray-50 transition-colors group"
+                          onClick={() => setIsServicesOpen(false)}
+                        >
+                          <div className="text-sm font-medium text-gray-900 group-hover:text-[#FF9644] transition-colors">
+                            {service.title}
+                          </div>
+                          <div className="text-xs text-gray-500 group-hover:text-gray-600">
+                            {service.description}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <Link
                 href="/tools"
-                className="px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-colors duration-300"
+                className={`px-4 py-2 font-medium transition-colors relative ${isActive("/tools")
+                  ? "text-[#FF9644]"
+                  : "text-[#562F00] hover:text-[#FF9644]"
+                  }`}
               >
-                <span className={navItemBaseClasses}>Tools</span>
+                Tests
+                {isActive("/tools") && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#FF9644] rounded-full" />
+                )}
               </Link>
 
               <Link
                 href="/pathways"
-                className="px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-colors duration-300"
+                className={`px-4 py-2 font-medium transition-colors relative ${isActive("/pathways")
+                  ? "text-[#FF9644]"
+                  : "text-[#562F00] hover:text-[#FF9644]"
+                  }`}
               >
-                <span className={navItemBaseClasses}>Pathways</span>
-              </Link>
-
-              {/* Services Dropdown */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className={`px-4 py-2 rounded-full hover:bg-[#FFCE99]/20 transition-all duration-300 flex items-center gap-2 ${isServicesOpen ? 'bg-[#FFCE99]/20' : ''}`}
-                >
-                  <span className={navItemBaseClasses}>Our Services</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {isServicesOpen && (
-                  <>
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setIsServicesOpen(false)}
-                    />
-                    <div className="absolute left-0 top-full mt-2 z-50 w-72 rounded-2xl border border-[#FFCE99]/30 bg-white shadow-2xl p-4 animate-fade-in">
-                      <div className="grid grid-cols-1 gap-2">
-                        <Link
-                          href="/services"
-                          className="mb-1 block rounded-lg bg-[#FFF7EB] px-4 py-3 text-xs font-semibold text-[#AA5A00] hover:bg-[#FFCE99]/30 hover:text-[#562F00] transition-colors"
-                          onClick={() => setIsServicesOpen(false)}
-                        >
-                          View all services →
-                        </Link>
-                        {services.map((service) => (
-                          <Link
-                            key={service.slug}
-                            href={`/services/${service.slug}`}
-                            className="group flex items-center p-3 rounded-xl hover:bg-gradient-to-r hover:from-[#FF9644]/10 hover:to-[#FFCE99]/10 transition-all duration-300 hover:scale-[1.02]"
-                            onClick={() => setIsServicesOpen(false)}
-                          >
-                            <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-3 group-hover:scale-125 transition-transform duration-300" />
-                            <span className="text-[#562F00] group-hover:text-[#FF9644] font-medium transition-colors duration-300">
-                              {service.title}
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </>
+                Pathways
+                {isActive("/pathways") && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#FF9644] rounded-full" />
                 )}
-              </div>
+              </Link>
             </div>
 
-            {/* Contact Button */}
-            <Link
-              href="/contact"
-              className="ml-4 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF9644] to-[#FFCE99] text-[#562F00] font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 group"
+            {/* Desktop Right Buttons */}
+            <div className="hidden lg:flex items-center space-x-3">
+              <Link
+                href="/contact"
+                className={`px-5 py-2 font-medium rounded-md transition-all duration-200 ${isActive("/contact")
+                  ? "bg-[#FF9644] text-white shadow-md"
+                  : "bg-[#FF9644] text-white hover:bg-[#e07d2e] shadow-sm hover:shadow"
+                  }`}
+              >
+                Contact
+              </Link>
+
+              <Link
+                href="/admin-login"
+                className="px-5 py-2 font-medium text-[#562F00] border border-[#562F00] rounded-md hover:bg-[#562F00] hover:text-white transition-all duration-200"
+              >
+                Admin
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 text-[#562F00] hover:bg-gray-100 rounded-lg transition-colors"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
-              <span>Contact Us</span>
               <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
-            </Link>
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-[#FFCE99]/20 transition-colors duration-300"
-            aria-label="Toggle menu"
+          {/* Mobile Menu */}
+          <div
+            className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "max-h-[600px] opacity-100 mt-4" : "max-h-0 opacity-0"
+              }`}
           >
-            <div className="relative w-6 h-6">
-              <span className={`absolute top-1/2 left-1/2 w-6 h-0.5 bg-[#562F00] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45' : '-translate-y-2'}`} />
-              <span className={`absolute top-1/2 left-1/2 w-6 h-0.5 bg-[#562F00] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`absolute top-1/2 left-1/2 w-6 h-0.5 bg-[#562F00] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45' : 'translate-y-2'}`} />
-            </div>
-          </button>
-        </div>
+            <div className="py-4 border-t border-gray-100">
+              <div className="flex flex-col space-y-1">
+                <Link
+                  href="/"
+                  className={`px-4 py-3 rounded-lg transition-colors ${isActive("/")
+                    ? "bg-orange-50 text-[#FF9644] font-medium"
+                    : "text-[#562F00] hover:bg-gray-50"
+                    }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </Link>
 
-        {/* Mobile Menu */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-          <div className="bg-white rounded-2xl shadow-xl p-6 border border-[#FFCE99]/20">
-            <div className="space-y-4">
-              <Link
-                href="/"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">Home</span>
-              </Link>
+                <Link
+                  href="/about"
+                  className={`px-4 py-3 rounded-lg transition-colors ${isActive("/about")
+                    ? "bg-orange-50 text-[#FF9644] font-medium"
+                    : "text-[#562F00] hover:bg-gray-50"
+                    }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About
+                </Link>
 
-              <Link
-                href="/about"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">About Us</span>
-              </Link>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between p-4 rounded-xl">
-                  <span className="text-lg font-medium text-[#562F00]">Our Services</span>
+                {/* Mobile Services Accordion */}
+                <div className="space-y-1">
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
-                    className="p-2 rounded-lg hover:bg-[#FFCE99]/20 transition-colors duration-300"
+                    className={`w-full px-4 py-3 rounded-lg transition-colors flex items-center justify-between ${isServicesOpen || pathname.startsWith("/services")
+                      ? "bg-orange-50 text-[#FF9644] font-medium"
+                      : "text-[#562F00] hover:bg-gray-50"
+                      }`}
                   >
+                    <span>Services</span>
                     <svg
-                      className={`w-5 h-5 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`}
+                      className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -208,93 +312,108 @@ export default function Navbar() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                </div>
 
-                <div className={`overflow-hidden transition-all duration-500 ${isServicesOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="ml-6 pl-4 border-l-2 border-[#FFCE99]/30 space-y-2">
-                    <Link
-                      href="/services"
-                      className="block py-3 px-4 rounded-lg font-semibold text-[#AA5A00] hover:bg-[#FFCE99]/10 hover:text-[#562F00] transition-all duration-300"
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setIsServicesOpen(false);
-                      }}
-                    >
-                      View all services →
-                    </Link>
-                    {services.map((service) => (
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${isServicesOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                  >
+                    <div className="pl-4 space-y-1 mt-1">
                       <Link
-                        key={service.slug}
-                        href={`/services/${service.slug}`}
-                        className="block py-3 px-4 rounded-lg hover:bg-[#FFCE99]/10 text-[#562F00] hover:text-[#FF9644] transition-all duration-300"
+                        href="/services"
+                        className="block px-4 py-2.5 text-sm text-[#AA5A00] font-medium hover:bg-orange-50 rounded-lg transition-colors"
                         onClick={() => {
                           setIsMobileMenuOpen(false);
                           setIsServicesOpen(false);
                         }}
                       >
-                        {service.title}
+                        <div className="flex items-center justify-between">
+                          <span>All Services</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
                       </Link>
-                    ))}
+
+                      {services.map((service) => (
+                        <Link
+                          key={service.slug}
+                          href={`/services/${service.slug}`}
+                          className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#FF9644] rounded-lg transition-colors"
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            setIsServicesOpen(false);
+                          }}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
+
+                <Link
+                  href="/tools"
+                  className={`px-4 py-3 rounded-lg transition-colors ${isActive("/tools")
+                    ? "bg-orange-50 text-[#FF9644] font-medium"
+                    : "text-[#562F00] hover:bg-gray-50"
+                    }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Test
+                </Link>
+
+                <Link
+                  href="/pathways"
+                  className={`px-4 py-3 rounded-lg transition-colors ${isActive("/pathways")
+                    ? "bg-orange-50 text-[#FF9644] font-medium"
+                    : "text-[#562F00] hover:bg-gray-50"
+                    }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Pathways
+                </Link>
+
+                <div className="pt-4 mt-2 border-t border-gray-100 space-y-2">
+                  <Link
+                    href="/contact"
+                    className="block px-4 py-3 bg-[#FF9644] text-white font-medium rounded-lg hover:bg-[#e07d2e] transition-colors text-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contact Us
+                  </Link>
+
+                  <Link
+                    href="/admin-login"
+                    className="block px-4 py-3 border border-[#562F00] text-[#562F00] font-medium rounded-lg hover:bg-[#562F00] hover:text-white transition-colors text-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Admin Login
+                  </Link>
+                </div>
               </div>
-
-              <Link
-                href="/internships-careers"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">Internships & Careers</span>
-              </Link>
-
-              <Link
-                href="/blogs"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">Blogs</span>
-              </Link>
-
-              <Link
-                href="/tools"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">Tools</span>
-              </Link>
-
-              <Link
-                href="/pathways"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">Pathways</span>
-              </Link>
-
-              <Link
-                href="/partner-with-us"
-                className="flex items-center p-4 rounded-xl hover:bg-[#FFCE99]/10 transition-all duration-300 group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <div className="w-2 h-2 rounded-full bg-[#FF9644] mr-4 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-lg font-medium text-[#562F00]">Partner with Us</span>
-              </Link>
-
-              <Link
-                href="/contact"
-                className="mt-6 block text-center py-4 rounded-xl bg-gradient-to-r from-[#FF9644] to-[#FFCE99] text-[#562F00] font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact Us
-              </Link>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+
+      {/* Spacer */}
+      <div className={`transition-all duration-300 ${isScrolled ? "h-16 lg:h-[72px]" : "h-20 lg:h-[88px]"}`} />
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
+        }
+      `}</style>
+    </>
   );
 }
