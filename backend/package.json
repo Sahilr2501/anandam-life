@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
+    "build": "npm install --prefix backend && npm run build --prefix backend",
+    "start": "npm run start --prefix backend",
     "lint": "eslint ."
   },
   "dependencies": {
