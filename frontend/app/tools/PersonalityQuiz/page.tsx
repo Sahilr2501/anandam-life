@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { getBrowserBackendUrl } from "@/lib/backendUrl";
 
 interface Question {
   id: number;
@@ -414,7 +415,7 @@ const PersonalityQuiz: React.FC = () => {
     });
 
     try {
-      const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+      const apiBaseUrl = getBrowserBackendUrl();
       const response = await fetch(`${apiBaseUrl}/quiz-submissions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

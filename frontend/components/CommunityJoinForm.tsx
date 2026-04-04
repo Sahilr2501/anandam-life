@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { getBrowserBackendUrl } from "@/lib/backendUrl";
 
 export function CommunityJoinForm() {
   const [formData, setFormData] = useState({
@@ -20,8 +21,7 @@ export function CommunityJoinForm() {
       setSubmitError("");
       setSubmitMessage("");
 
-      const backendUrl =
-        process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+      const backendUrl = getBrowserBackendUrl();
 
       const response = await fetch(`${backendUrl}/community-subscribers`, {
         method: "POST",

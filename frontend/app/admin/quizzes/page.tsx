@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getServerBackendUrl } from "@/lib/backendUrl";
 
 interface QuizSubmission {
   id: string;
@@ -13,7 +14,7 @@ interface QuizSubmission {
 }
 
 async function getQuizSubmissions() {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+  const backendUrl = getServerBackendUrl();
 
   try {
     const response = await fetch(`${backendUrl}/quiz-submissions`, {
@@ -29,7 +30,8 @@ async function getQuizSubmissions() {
     };
 
     return data.submissions ?? [];
-  } catch {
+  } catch (err) {
+    console.error("[admin/quizzes] Backend fetch failed:", backendUrl, err);
     return [];
   }
 }

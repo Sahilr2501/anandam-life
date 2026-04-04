@@ -17,6 +17,7 @@ const port = Number(process.env.PORT ?? 4000);
 
 const defaultFrontendOrigins = [
   "https://anandam-life.vercel.app",
+  "https://www.anandam-life.vercel.app",
   "http://localhost:3000",
 ];
 const frontendOrigins = process.env.FRONTEND_ORIGINS

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { getBrowserBackendUrl } from "@/lib/backendUrl";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -25,8 +26,7 @@ export default function ContactPage() {
       setSubmitMessage("");
       setSubmitError("");
 
-      const backendUrl =
-        process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+      const backendUrl = getBrowserBackendUrl();
       const response = await fetch(`${backendUrl}/contact-submissions`, {
         method: "POST",
         headers: {

@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getServerBackendUrl } from "@/lib/backendUrl";
 
 interface DashboardStats {
   totalQuizSubmissions: number;
@@ -27,7 +28,7 @@ interface DashboardAction {
 }
 
 const getDashboardStats = async () => {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+  const backendUrl = getServerBackendUrl();
   try {
     const response = await fetch(`${backendUrl}/admin/dashboard/summary`, {
       cache: "no-store",
@@ -48,7 +49,8 @@ const getDashboardStats = async () => {
       recentSubmissions: data.recentSubmissions,
       quickActions: data.quickActions,
     };
-  } catch {
+  } catch (err) {
+    console.error("[admin/dashboard] Backend fetch failed:", backendUrl, err);
     return {
       stats: {
         totalQuizSubmissions: 0,

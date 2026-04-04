@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getServerBackendUrl } from "@/lib/backendUrl";
 
 interface DashboardSummaryResponse {
   stats: {
@@ -25,7 +26,7 @@ interface QuizSubmissionsResponse {
 }
 
 async function getAnalyticsData() {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+  const backendUrl = getServerBackendUrl();
 
   try {
     const [summaryResponse, quizResponse] = await Promise.all([
@@ -55,7 +56,8 @@ async function getAnalyticsData() {
       recentSubmissions: summary?.recentSubmissions ?? [],
       resultBreakdown,
     };
-  } catch {
+  } catch (err) {
+    console.error("[admin/analytics] Backend fetch failed:", backendUrl, err);
     return {
       stats: {
         totalQuizSubmissions: 0,

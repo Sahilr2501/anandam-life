@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getServerBackendUrl } from "@/lib/backendUrl";
 
 interface CommunitySubscriber {
   id: string;
@@ -11,7 +12,7 @@ interface CommunitySubscriber {
 }
 
 async function getCommunitySubscribers() {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+  const backendUrl = getServerBackendUrl();
 
   try {
     const response = await fetch(`${backendUrl}/community-subscribers`, {
@@ -27,7 +28,8 @@ async function getCommunitySubscribers() {
     };
 
     return data.subscribers ?? [];
-  } catch {
+  } catch (err) {
+    console.error("[admin/community-subscribers] Backend fetch failed:", backendUrl, err);
     return [];
   }
 }

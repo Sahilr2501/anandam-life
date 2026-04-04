@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { getBrowserBackendUrl } from "@/lib/backendUrl";
 
 interface Question {
     id: number;
@@ -464,7 +465,7 @@ const CareerQuiz: React.FC = () => {
         setSaveSuccessMessage("");
 
         try {
-            const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+            const apiBaseUrl = getBrowserBackendUrl();
             const response = await fetch(`${apiBaseUrl}/quiz-submissions`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

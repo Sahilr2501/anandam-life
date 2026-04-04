@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getServerBackendUrl } from "@/lib/backendUrl";
 
 interface ContactSubmission {
   id: string;
@@ -14,7 +15,7 @@ interface ContactSubmission {
 }
 
 async function getSubmissions() {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
+  const backendUrl = getServerBackendUrl();
 
   try {
     const contactsRes = await fetch(`${backendUrl}/contact-submissions`, {
@@ -28,7 +29,8 @@ async function getSubmissions() {
     return {
       contacts: contactsJson?.submissions ?? [],
     };
-  } catch {
+  } catch (err) {
+    console.error("[admin/submissions] Backend fetch failed:", backendUrl, err);
     return { contacts: [] };
   }
 }
