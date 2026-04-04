@@ -14,14 +14,29 @@ dotenv.config();
 const app = express();
 
 const port = Number(process.env.PORT ?? 4000);
-const corsOrigin = "https://anandam-life.vercel.app";
+
+const defaultFrontendOrigins = [
+  "https://anandam-life.vercel.app",
+  "http://localhost:3000",
+];
+const frontendOrigins = process.env.FRONTEND_ORIGINS
+  ? process.env.FRONTEND_ORIGINS.split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+  : defaultFrontendOrigins;
 
 app.use(
   cors({
-    origin: corsOrigin,
+    origin(origin, callback) {
+      if (!origin || frontendOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(null, false);
+    },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 app.use(express.json({ limit: "1mb" }));
