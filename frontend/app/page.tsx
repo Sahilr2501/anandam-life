@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import { CommunityJoinForm } from "@/components/CommunityJoinForm";
@@ -131,72 +133,85 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Individual Counseling",
-                desc: "Anxiety, overthinking, burnout, low mood, or just feeling stuck.",
-                href: "/services/PersonalCounseling",
-                image: "/images/Individual Counseling.jpg",
-              },
-              {
-                title: "Couple Therapy",
-                desc: "Rebuild trust, deepen connection, or navigate conflict with care.",
-                href: "/services/CoupleCounseling",
-                image: "/images/Couple Counseling.jpg",
-              },
-              {
-                title: "Career Guidance",
-                desc: "Clarity for students & professionals on purpose, strengths & next steps.",
-                href: "/services/CareerCounseling",
-                image: "/images/Career Guidance.jpg",
-              },
-              {
-                title: "Life Coaching",
-                desc: "Move from surviving to thriving with aligned goals and accountability.",
-                href: "/services/LifeCoaching",
-                image: "/images/Life Coaching.jpg",
-              },
-              {
-                title: "School / Parental Counseling",
-                desc: "Support for children, teens & parents through changing emotional needs.",
-                href: "/services/SchoolCounseling",
-                image: "/images/Parental Counseling.jpg",
-              },
-              {
-                title: "Corporate Programs",
-                desc: "Workplace mental wellness, leadership labs, and emotional skills at work.",
-                href: "/services/CorporateTraining",
-                image: "/images/Corporate Programs.jpg",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="group flex flex-col justify-between rounded-3xl bg-white p-5 shadow-sm ring-1 ring-[#FFCE99]/40 hover:-translate-y-1 hover:shadow-md hover:ring-[#FF9644]/60 transition-all"
-              >
-                <div>
-                  <div className="mb-4 flex justify-center">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="h-16 w-30 object-contain"
-                      width={100}
-                      height={100}
-                    />
+
+          <div className="mt-8">
+            <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Individual Counseling",
+                  desc: "Anxiety, overthinking, burnout, low mood, or just feeling stuck.",
+                  href: "/services/PersonalCounseling",
+                  image: "/images/Individual Counseling.jpg",
+                },
+                {
+                  title: "Couple Therapy",
+                  desc: "Rebuild trust, deepen connection, or navigate conflict with care.",
+                  href: "/services/CoupleCounseling",
+                  image: "/images/Couple Counseling.jpg",
+                },
+                {
+                  title: "Career Guidance",
+                  desc: "Clarity for students & professionals on purpose, strengths & next steps.",
+                  href: "/services/CareerCounseling",
+                  image: "/images/Career Guidance.jpg",
+                },
+                {
+                  title: "Life Coaching",
+                  desc: "Move from surviving to thriving with aligned goals and accountability.",
+                  href: "/services/LifeCoaching",
+                  image: "/images/Life Coaching.jpg",
+                },
+                {
+                  title: "School / Parental Counseling",
+                  desc: "Support for children, teens & parents through changing emotional needs.",
+                  href: "/services/SchoolCounseling",
+                  image: "/images/Parental Counseling.jpg",
+                },
+                {
+                  title: "Corporate Programs",
+                  desc: "Workplace mental wellness, leadership labs, and emotional skills at work.",
+                  href: "/services/CorporateTraining",
+                  image: "/images/Corporate Programs.jpg",
+                },
+              ].map((item) => (
+                <Link href={item.href} key={item.title}>
+                  <div className="group bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#FFCE99] hover:-translate-y-2 active:scale-[0.98]">
+                    {/* Image with circle background - EXTRA LARGE */}
+                    <div className="flex justify-center mb-6">
+                      <div className="rounded-full bg-gradient-to-br from-[#FFF7E8] to-[#FFE4C4] p-4 group-hover:from-[#FFCE99] group-hover:to-[#FFE4C4] transition-all duration-300">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="h-32 w-32 sm:h-36 sm:w-36 md:h-40 md:w-40 object-contain transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Title centered */}
+                    <h3 className="text-center text-lg sm:text-xl font-semibold text-[#2F1500] mb-3 transition-colors duration-300 group-hover:text-[#AA5A00]">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-center text-sm sm:text-base text-[#7A4A1A] line-clamp-2 transition-all duration-300">
+                      {item.desc}
+                    </p>
+
+                    {/* Button with hover animation */}
+                    <div className="mt-6 text-center">
+                      <span className="inline-flex items-center text-sm sm:text-base font-medium text-[#AA5A00] group-hover:gap-3 transition-all duration-300 gap-1 border-b-2 border-transparent group-hover:border-[#AA5A00] pb-1">
+                        Discover more
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="text-center text-base font-semibold text-[#2F1500]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-center text-sm text-[#7A4A1A]">{item.desc}</p>
-                </div>
-                <div className="mt-4 text-center text-xs font-semibold text-[#AA5A00]">
-                  <Link href={item.href} className="inline-flex items-center gap-1">
-                    Discover more →
-                  </Link>
-                </div>
-              </div>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
       {/* Free Interactive Tools */}
