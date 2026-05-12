@@ -61,7 +61,7 @@ export default function LifeCoachingPage() {
             <li>A complimentary consultation</li>
             <li>60–90 minute first session</li>
             <li>Ongoing sessions every two weeks or weekly, depending on your needs</li>
-            <li>Frequent or occasional virtual support</li>
+            <li>Frequent / occasional virtual support</li>
           </ul>
           <p className="font-medium text-[#2F1500]">
             Our life coaching is about you finding your path, not telling you what

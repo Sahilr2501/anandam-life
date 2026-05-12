@@ -21,33 +21,7 @@ export default function SchoolCounselingPage() {
 
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
         <div className="prose prose-[#7A4A1A] max-w-none space-y-6 text-[#7A4A1A] text-base leading-relaxed">
-          <p>
-            At ANANDAM, we believe that a strong foundation in mental and
-            emotional well-being is crucial for students to excel academically and
-            personally. Our School Counseling services are designed to support
-            students, parents, and educators in creating a balanced and
-            stress-free learning environment.
-          </p>
-          <p>
-            Growing academic pressure, social challenges, and personal
-            uncertainties can impact a student&apos;s confidence and motivation. Our
-            trained counselors help students:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 text-[#7A4A1A]">
-            <li>Manage stress and exam anxiety</li>
-            <li>Develop emotional resilience and coping skills</li>
-            <li>Build healthy communication and social interactions</li>
-            <li>Navigate peer pressure and bullying</li>
-            <li>Explore career and educational pathways</li>
-          </ul>
-          <p>
-            We also provide teacher and parent guidance to foster a nurturing
-            atmosphere where children can thrive. By promoting mental well-being
-            early on, we help young minds grow into confident, well-rounded
-            individuals prepared for the future.
-          </p>
-
-          <div className="rounded-2xl bg-[#FFF7EB] border border-[#FFCE99]/40 p-6 mt-8">
+          <div className="rounded-2xl bg-[#FFF7EB] border border-[#FFCE99]/40 p-6 sm:p-8">
             <h2 className="text-xl font-semibold text-[#2F1500] mb-4">
               School Psychology & Project Utkarsh
             </h2>
@@ -57,19 +31,50 @@ export default function SchoolCounselingPage() {
               students, while supporting parents and educators.
             </p>
             <p className="mt-4">
-              Our flagship initiative, <strong className="text-[#2F1500]">Project Utkarsh</strong>,
-              is an in-school mental wellness program focused on building
-              emotional resilience, reducing academic stress, and improving
-              overall student well-being. Through counseling, teacher workshops,
-              and parental engagement, we create a supportive environment for
-              children to thrive.
+              Our flagship initiative,{" "}
+              <strong className="text-[#2F1500]">Project Utkarsh</strong>, is an
+              in-school mental wellness program focused on building emotional
+              resilience, reducing academic stress, and improving overall student
+              well-being. Through counseling, teacher workshops, and parental
+              engagement, we create a supportive environment for children to
+              thrive.
             </p>
           </div>
 
-          <p className="font-medium text-[#2F1500]">
-            Let&apos;s work together to create a supportive learning space for your
-            students!
-          </p>
+          <div className="border-t border-[#FFCE99]/30 pt-8">
+            <h2 className="text-xl font-semibold text-[#2F1500] mb-4 not-prose">
+              School Counseling: Nurturing Young Minds for a Bright Future
+            </h2>
+            <p>
+              At ANANDAM, we believe that a strong foundation in mental and
+              emotional well-being is crucial for students to excel academically
+              and personally. Our School Counseling services are designed to
+              support students, parents, and educators in creating a balanced and
+              stress-free learning environment.
+            </p>
+            <p>
+              Growing academic pressure, social challenges, and personal
+              uncertainties can impact a student&apos;s confidence and motivation.
+              Our trained counselors help students:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-[#7A4A1A]">
+              <li>Manage stress and exam anxiety</li>
+              <li>Develop emotional resilience and coping skills</li>
+              <li>Build healthy communication and social interactions</li>
+              <li>Navigate peer pressure and bullying</li>
+              <li>Explore career and educational pathways</li>
+            </ul>
+            <p>
+              We also provide teacher and parent guidance to foster a nurturing
+              atmosphere where children can thrive. By promoting mental well-being
+              early on, we help young minds grow into confident, well-rounded
+              individuals prepared for the future.
+            </p>
+            <p className="font-medium text-[#2F1500] not-prose mt-6">
+              Let&apos;s work together to create a supportive learning space for
+              your students!
+            </p>
+          </div>
         </div>
 
         <div className="rounded-3xl bg-gradient-to-r from-[#FF9644]/14 via-[#FFCE99]/20 to-[#FFFDF1] p-6 sm:p-8 shadow-sm">

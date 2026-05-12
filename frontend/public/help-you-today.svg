@@ -1,0 +1,53 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="140" y1="40" x2="1030" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9644" stop-opacity="0.95"/>
+      <stop offset="0.55" stop-color="#FFCE99" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFF4E2" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(820 250) rotate(135) scale(520 420)">
+      <stop stop-color="#2F1500" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#2F1500" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-40" y="-40" width="1280" height="880" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <!-- soft background -->
+  <rect x="90" y="90" width="1020" height="620" rx="56" fill="url(#g1)"/>
+  <rect x="90" y="90" width="1020" height="620" rx="56" fill="url(#g2)"/>
+
+  <!-- floating cards -->
+  <g filter="url(#blur)" opacity="0.9">
+    <rect x="185" y="210" width="300" height="190" rx="34" fill="#FFFFFF"/>
+    <rect x="520" y="180" width="420" height="230" rx="40" fill="#FFFFFF"/>
+    <rect x="300" y="440" width="540" height="190" rx="40" fill="#FFFFFF"/>
+  </g>
+
+  <!-- card accents -->
+  <rect x="185" y="210" width="300" height="190" rx="34" fill="#FFFFFF" opacity="0.75"/>
+  <rect x="520" y="180" width="420" height="230" rx="40" fill="#FFFFFF" opacity="0.72"/>
+  <rect x="300" y="440" width="540" height="190" rx="40" fill="#FFFFFF" opacity="0.70"/>
+
+  <circle cx="245" cy="270" r="22" fill="#FF9644" opacity="0.85"/>
+  <circle cx="310" cy="270" r="22" fill="#FFCE99" opacity="0.95"/>
+  <circle cx="375" cy="270" r="22" fill="#2F1500" opacity="0.14"/>
+
+  <path d="M580 255C580 230 600 210 625 210H885C910 210 930 230 930 255V300C930 325 910 345 885 345H625C600 345 580 325 580 300V255Z" fill="#FFF4E2" opacity="0.85"/>
+  <path d="M360 500C360 475 380 455 405 455H735C760 455 780 475 780 500V540C780 565 760 585 735 585H405C380 585 360 565 360 540V500Z" fill="#FFF4E2" opacity="0.75"/>
+
+  <!-- subtle linework -->
+  <path d="M230 330H440" stroke="#7A4A1A" stroke-opacity="0.20" stroke-width="10" stroke-linecap="round"/>
+  <path d="M230 360H395" stroke="#7A4A1A" stroke-opacity="0.16" stroke-width="10" stroke-linecap="round"/>
+
+  <path d="M605 270H895" stroke="#2F1500" stroke-opacity="0.16" stroke-width="12" stroke-linecap="round"/>
+  <path d="M605 305H815" stroke="#2F1500" stroke-opacity="0.12" stroke-width="12" stroke-linecap="round"/>
+
+  <path d="M400 505H730" stroke="#2F1500" stroke-opacity="0.12" stroke-width="12" stroke-linecap="round"/>
+  <path d="M400 540H650" stroke="#2F1500" stroke-opacity="0.10" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- corner glow -->
+  <circle cx="1020" cy="155" r="140" fill="#FF9644" opacity="0.16"/>
+  <circle cx="1020" cy="155" r="86" fill="#FFCE99" opacity="0.22"/>
+</svg>

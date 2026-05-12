@@ -9,13 +9,16 @@ export default function PersonalCounselingPage() {
             Personal Counseling
           </p>
           <h1 className="mt-2 text-3xl font-semibold text-[#2F1500] sm:text-4xl">
-            A Safe Space for Your Inner World
+            Personalized Counseling for a Balanced Life
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-[#7A4A1A] sm:text-base">
-            Drawing inspiration from ancient Vedic wisdom, ANANDAM offers
-            personalized counseling for the moments when your thoughts feel loud,
-            your heart feels heavy, or life feels like it&apos;s moving faster than
-            you can process—a gentle, confidential space to pause and realign.
+            At ANANDAM, we understand that life can sometimes feel overwhelming.
+            Whether it&apos;s daily stress, anxiety, mood fluctuations, or
+            relationship challenges, we believe inner peace and emotional
+            well-being are not only achievable but essential. Drawing inspiration
+            from ancient Vedic wisdom, we offer personalized counseling—a gentle,
+            confidential space to pause, realign, and rediscover your inner
+            harmony.
           </p>
           <div className="mt-4 text-xs text-[#7A4A1A]">
             <Link

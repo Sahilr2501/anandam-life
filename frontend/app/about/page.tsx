@@ -90,6 +90,31 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Literature & Knowledge Base */}
+      <section className="border-t border-[#FFCE99]/30 bg-[#FFFDF1] py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-[#2F1500] mb-4">
+            Literature & Knowledge Base
+          </h2>
+          <div className="prose prose-[#7A4A1A] max-w-none space-y-4 text-[#7A4A1A] text-base leading-relaxed">
+            <p>
+              Our work is backed by a blend of modern psychology and ancient
+              wisdom. Explore articles, therapeutic frameworks, and curated
+              resources to deepen your understanding of mental health. We aim to
+              make mental wellness knowledge accessible and impactful.
+            </p>
+          </div>
+          <div className="mt-6">
+            <Link
+              href="/blogs"
+              className="inline-flex items-center justify-center rounded-full border border-[#FF9644]/60 bg-white px-6 py-3 text-sm font-semibold text-[#AA5A00] hover:bg-[#FFF4E2] transition-colors"
+            >
+              Browse blogs & resources →
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

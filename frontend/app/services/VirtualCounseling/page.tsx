@@ -31,7 +31,7 @@ export default function VirtualCounselingPage() {
           <p>
             For many, discussing sensitive issues in person can feel intimidating
             or overwhelming. Virtual counseling offers you the opportunity to
-            connect with our team from the comfort of your own space, without the
+            connect with Dr. Jani from the comfort of your own space, without the
             fear of judgment or the stress of face-to-face interactions. Whether
             you&apos;re dealing with anxiety, relationship challenges, personal
             struggles, or simply need someone to talk to, we&apos;re here to
@@ -41,7 +41,7 @@ export default function VirtualCounselingPage() {
           <p>
             We know that privacy is essential, and our virtual counseling service
             ensures that your identity remains protected. By logging into a secure
-            platform with a provided ID and password, you can have your session
+            chat forum with a provided ID and password, you can have your session
             discreetly, allowing you to open up without feeling exposed.
           </p>
           <p>

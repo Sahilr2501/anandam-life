@@ -131,38 +131,43 @@ export default function Home() {
               </p>
             </div>
           </div>
-
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {[
               {
                 title: "Individual Counseling",
                 desc: "Anxiety, overthinking, burnout, low mood, or just feeling stuck.",
                 href: "/services/PersonalCounseling",
+                image: "/images/Individual Counseling.jpg",
               },
               {
                 title: "Couple Therapy",
                 desc: "Rebuild trust, deepen connection, or navigate conflict with care.",
                 href: "/services/CoupleCounseling",
+                image: "/images/Couple Counseling.jpg",
               },
               {
                 title: "Career Guidance",
                 desc: "Clarity for students & professionals on purpose, strengths & next steps.",
                 href: "/services/CareerCounseling",
+                image: "/images/Career Guidance.jpg",
               },
               {
                 title: "Life Coaching",
                 desc: "Move from surviving to thriving with aligned goals and accountability.",
                 href: "/services/LifeCoaching",
+                image: "/images/Life Coaching.jpg",
               },
               {
                 title: "School / Parental Counseling",
                 desc: "Support for children, teens & parents through changing emotional needs.",
                 href: "/services/SchoolCounseling",
+                image: "/images/Parental Counseling.jpg",
               },
               {
                 title: "Corporate Programs",
                 desc: "Workplace mental wellness, leadership labs, and emotional skills at work.",
                 href: "/services/CorporateTraining",
+                image: "/images/Corporate Programs.jpg",
               },
             ].map((item) => (
               <div
@@ -170,12 +175,21 @@ export default function Home() {
                 className="group flex flex-col justify-between rounded-3xl bg-white p-5 shadow-sm ring-1 ring-[#FFCE99]/40 hover:-translate-y-1 hover:shadow-md hover:ring-[#FF9644]/60 transition-all"
               >
                 <div>
-                  <h3 className="text-base font-semibold text-[#2F1500]">
+                  <div className="mb-4 flex justify-center">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-16 w-30 object-contain"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                  <h3 className="text-center text-base font-semibold text-[#2F1500]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm text-[#7A4A1A]">{item.desc}</p>
+                  <p className="mt-3 text-center text-sm text-[#7A4A1A]">{item.desc}</p>
                 </div>
-                <div className="mt-4 text-xs font-semibold text-[#AA5A00]">
+                <div className="mt-4 text-center text-xs font-semibold text-[#AA5A00]">
                   <Link href={item.href} className="inline-flex items-center gap-1">
                     Discover more →
                   </Link>
