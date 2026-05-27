@@ -14,15 +14,15 @@ import Logo from "@/images/logo.png";
 // import Logo from "@/assets/logo.png";
 
 const services = [
-  { title: "Personal Counseling", slug: "personal-counseling", description: "Individual support for personal growth" },
-  { title: "Career Counseling", slug: "career-counseling", description: "Navigate your professional journey" },
-  { title: "Couple Counseling", slug: "couple-counseling", description: "Strengthen your relationship" },
-  { title: "Family Counseling", slug: "family-counseling", description: "Build stronger family bonds" },
-  { title: "Life Coaching", slug: "life-coaching", description: "Achieve your life goals" },
-  { title: "Parental Counseling", slug: "parental-counseling", description: "Support for parenting challenges" },
-  { title: "School Counseling", slug: "school-counseling", description: "Academic and social support" },
-  { title: "Virtual Counseling", slug: "virtual-counseling", description: "Online sessions from anywhere" },
-  { title: "Corporate Training", slug: "corporate-training", description: "Workplace wellness solutions" },
+  { title: "Personal Counseling", slug: "PersonalCounseling", description: "Individual support for personal growth" },
+  { title: "Career Counseling", slug: "CareerCounseling", description: "Navigate your professional journey" },
+  { title: "Couple Counseling", slug: "CoupleCounseling", description: "Strengthen your relationship" },
+  { title: "Family Counseling", slug: "FamilyCounseling", description: "Build stronger family bonds" },
+  { title: "Life Coaching", slug: "LifeCoaching", description: "Achieve your life goals" },
+  { title: "Parental Counseling", slug: "ParentalCounseling", description: "Support for parenting challenges" },
+  { title: "School Counseling", slug: "SchoolCounseling", description: "Academic and social support" },
+  { title: "Virtual Counseling", slug: "VirtualCounseling", description: "Online sessions from anywhere" },
+  { title: "Corporate Training", slug: "CorporateTraining", description: "Workplace wellness solutions" },
 ];
 
 export default function Navbar() {

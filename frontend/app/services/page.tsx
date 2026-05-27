@@ -80,57 +80,58 @@ export default function ServicesPage() {
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => (
             <article
-              key={service.slug}
-              className="group bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 ring-1 ring-[#FFCE99]/40 hover:ring-[#FF9644]/70 hover:-translate-y-2 active:scale-[0.98]"
-            >
-              {/* Clickable Image */}
-              <Link href={`/services/${service.slug}`} className="block">
-                <div className="flex justify-center mb-5">
-                  <div className="rounded-full bg-gradient-to-br from-[#FFF7E8] to-[#FFE4C4] p-4 group-hover:from-[#FFCE99] group-hover:to-[#FFE4C4] transition-all duration-300">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                </div>
-              </Link>
+  key={service.slug}
+  className="group overflow-hidden rounded-3xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+>
+  {/* Image */}
+  <Link href={`/services/${service.slug}`} className="block overflow-hidden">
+    <img
+      src={service.image}
+      alt={service.title}
+      className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  </Link>
 
-              {/* Title */}
-              <Link href={`/services/${service.slug}`}>
-                <h2 className="text-center text-lg sm:text-xl font-semibold text-[#2F1500] mb-3 transition-colors duration-300 group-hover:text-[#AA5A00]">
-                  {service.title}
-                </h2>
-              </Link>
+  {/* Content */}
+  <div className="p-6">
+    {/* Title */}
+    <Link href={`/services/${service.slug}`}>
+      <h2 className="text-2xl font-semibold text-[#2F1500] transition-colors duration-300 group-hover:text-[#AA5A00]">
+        {service.title}
+      </h2>
+    </Link>
 
-              {/* Description */}
-              <p className="text-center text-sm text-[#7A4A1A] line-clamp-3">
-                {service.desc}
-              </p>
+    {/* Description */}
+    <p className="mt-4 text-[15px] leading-7 text-[#7A4A1A]">
+      {service.desc}
+    </p>
 
-              {/* Button */}
-              <div className="mt-5 text-center">
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="inline-flex items-center text-sm font-medium text-[#AA5A00] group-hover:gap-3 transition-all duration-300 gap-1 border-b-2 border-transparent group-hover:border-[#AA5A00] pb-1"
-                >
-                  Explore this service
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </article>
+    {/* Link */}
+    <div className="mt-6">
+      <Link
+        href={`/services/${service.slug}`}
+        className="inline-flex items-center gap-2 text-sm font-medium text-[#C46A00] transition-all duration-300 hover:gap-3"
+      >
+        Discover more
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </Link>
+    </div>
+  </div> 
+</article>
           ))}
         </div>
 
