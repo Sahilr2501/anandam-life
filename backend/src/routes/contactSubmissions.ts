@@ -77,3 +77,66 @@ contactSubmissionsRouter.post("/", async (req, res) => {
       .json({ error: `Failed to save contact submission: ${message}` });
   }
 });
+
+// Update submission status
+contactSubmissionsRouter.patch("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body as { status?: "new" | "read" | "replied" | "archived" };
+
+    if (!status) {
+      res.status(400).json({ error: "status is required" });
+      return;
+    }
+
+    const updated = await ContactSubmission.findByIdAndUpdate(
+      id,
+      { $set: { status } },
+      { new: true }
+    ).lean();
+
+    if (!updated) {
+      res.status(404).json({ error: "Submission not found" });
+      return;
+    }
+
+    res.json({
+      ok: true,
+      submission: {
+        id: String(updated._id),
+        name: updated.name,
+        email: updated.email,
+        phone: updated.phone,
+        service: updated.service,
+        preferredDate: updated.preferredDate,
+        preferredTime: updated.preferredTime,
+        message: updated.message,
+        createdAt: updated.createdAt,
+        status: updated.status,
+      },
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    res.status(500).json({ error: `Failed to update submission: ${message}` });
+  }
+});
+
+// Delete submission
+contactSubmissionsRouter.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deleted = await ContactSubmission.findByIdAndDelete(id).lean();
+
+    if (!deleted) {
+      res.status(404).json({ error: "Submission not found" });
+      return;
+    }
+
+    res.json({ ok: true, success: true });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    res.status(500).json({ error: `Failed to delete submission: ${message}` });
+  }
+});
+
