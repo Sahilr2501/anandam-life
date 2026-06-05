@@ -4,13 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { CommunityJoinForm } from "@/components/CommunityJoinForm";
 import Logo from "@/images/logo.png";
+import hero from "@/images/website-bg-hero.jpg";
 
 export default function Home() {
   return (
     <main className="bg-[#FFFDF1] text-[#562F00] overflow-x-hidden">
-      {/* Hero Section - Optimized for mobile */}
+      {/* Hero Section - Optimized for mobile with background image */}
       <section className="relative overflow-hidden">
-        <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:py-24 lg:px-8">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={hero}
+            alt="Calming nature background"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Optional overlay for better text readability */}
+          <div className="absolute inset-0 bg-white/25" />
+        </div>
+        
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:py-24 lg:px-8">
           {/* Text content - full width on mobile */}
           <div className="max-w-xl space-y-5">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-[#2F1500] sm:text-4xl lg:text-5xl">
@@ -19,7 +33,7 @@ export default function Home() {
                 Rooted in Ancient Wisdom
               </span>
             </h1>
-            <p className="text-base leading-relaxed text-[#7A4A1A] sm:text-lg">
+            <p className="text-base leading-relaxed text-[#000000] sm:text-lg">
               A gentle blend of evidence-based psychology and timeless
               philosophies, helping you slow down, reflect, and realign your
               life with who you truly are.
@@ -41,7 +55,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <p className="text-xs text-[#A06B3A] pt-2 text-center sm:text-left">
+            <p className="text-xs text-[#000000] pt-2 text-center sm:text-left">
               1:1 support · completely confidential · for individuals, couples,
               families & professionals
             </p>

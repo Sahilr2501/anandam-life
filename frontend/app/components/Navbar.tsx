@@ -4,14 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-
-// Try different import approaches
-// Option 1: If logo.png is in public/images folder
 import Logo from "@/images/logo.png";
-// Option 2: If logo.png is in public folder
-// import Logo from "/logo.png";
-// Option 3: If logo.png is in assets folder
-// import Logo from "@/assets/logo.png";
 
 const services = [
   { title: "Personal Counseling", slug: "PersonalCounseling", description: "Individual support for personal growth" },
@@ -63,33 +56,33 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm py-3"
-          : "bg-white py-5"
+          ? "bg-white/95 backdrop-blur-sm shadow-sm py-2"
+          : "bg-white py-3"
           }`}
       >
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo - Fixed with fallback */}
+            {/* Logo - Increased size */}
             <Link
               href="/"
               className="flex items-center shrink-0 group"
               aria-label="Anandam Life - Home"
             >
               {!logoError ? (
-                <div className="relative h-10 w-32 lg:h-12 lg:w-40">
+                <div className="relative h-16 w-52 lg:h-20 lg:w-64">
                   <Image
                     src={Logo}
                     alt="Anandam Life"
                     className="object-contain"
                     priority
                     fill
-                    sizes="(max-width: 768px) 128px, 160px"
+                    sizes="(max-width: 768px) 176px, 208px"
                     onError={() => setLogoError(true)}
                   />
                 </div>
               ) : (
                 // Fallback text logo if image fails to load
-                <span className="text-xl font-bold text-[#562F00]">
+                <span className="text-2xl font-bold text-[#562F00]">
                   Anandam Life
                 </span>
               )}
@@ -396,8 +389,8 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Spacer */}
-      <div className={`transition-all duration-300 ${isScrolled ? "h-16 lg:h-[72px]" : "h-20 lg:h-[88px]"}`} />
+      {/* Spacer - Adjusted for larger logo */}
+      <div className={`transition-all duration-300 ${isScrolled ? "h-[60px] lg:h-[68px]" : "h-[68px] lg:h-[76px]"}`} />
 
       <style jsx>{`
         @keyframes fadeIn {

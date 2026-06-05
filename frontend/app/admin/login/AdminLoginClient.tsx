@@ -240,13 +240,6 @@ export function AdminLoginClient({ nextPath }: { nextPath?: string }) {
               <span>Back to Home</span>
             </Link>
           </div>
-
-          {/* Demo Credentials (Remove in production) */}
-          <div className="mt-4 text-center">
-            <p className="text-xs text-[#7A4A1A] opacity-60">
-              Demo: username: admin • password: admin123
-            </p>
-          </div>
         </div>
       </motion.div>
     </div>
