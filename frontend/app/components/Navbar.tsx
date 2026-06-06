@@ -225,13 +225,6 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-
-              <Link
-                href="/admin-login"
-                className="px-5 py-2 font-medium text-[#562F00] border border-[#562F00] rounded-md hover:bg-[#562F00] hover:text-white transition-all duration-200"
-              >
-                Admin
-              </Link>
             </div>
 
             {/* Mobile Menu Button */}
