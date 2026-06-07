@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function PersonalCounselingPage() {
   return (
@@ -11,15 +12,6 @@ export default function PersonalCounselingPage() {
           <h1 className="mt-2 text-3xl font-semibold text-[#2F1500] sm:text-4xl">
             Personalized Counseling for a Balanced Life
           </h1>
-          <p className="mt-3 max-w-2xl text-sm text-[#7A4A1A] sm:text-base">
-            At ANANDAM, we understand that life can sometimes feel overwhelming.
-            Whether it&apos;s daily stress, anxiety, mood fluctuations, or
-            relationship challenges, we believe inner peace and emotional
-            well-being are not only achievable but essential. Drawing inspiration
-            from ancient Vedic wisdom, we offer personalized counseling—a gentle,
-            confidential space to pause, realign, and rediscover your inner
-            harmony.
-          </p>
           <div className="mt-4 text-xs text-[#7A4A1A]">
             <Link
               href="/services"
@@ -32,6 +24,28 @@ export default function PersonalCounselingPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
+        {/* Image Section */}
+        <div className="relative h-64 w-full overflow-hidden rounded-2xl shadow-lg md:h-96">
+          <Image
+            src="/images/Individual Counseling.jpg"
+            alt="Personal counseling session - a peaceful space for emotional well-being and inner harmony"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#562F00]/40 to-transparent" />
+        </div>
+
+        <p className="text-base leading-relaxed text-[#7A4A1A]">
+          At ANANDAM, we understand that life can sometimes feel overwhelming.
+          Whether it&apos;s daily stress, anxiety, mood fluctuations, or
+          relationship challenges, we believe inner peace and emotional
+          well-being are not only achievable but essential. Drawing inspiration
+          from ancient Vedic wisdom, we offer personalized counseling—a gentle,
+          confidential space to pause, realign, and rediscover your inner
+          harmony.
+        </p>
+
         <div className="grid gap-8 md:grid-cols-2">
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-[#2F1500]">
@@ -90,4 +104,3 @@ export default function PersonalCounselingPage() {
     </main>
   );
 }
-

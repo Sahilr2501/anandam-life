@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CoupleCounselingPage() {
   return (
@@ -20,7 +21,19 @@ export default function CoupleCounselingPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
-        <div className="prose prose-[#7A4A1A] max-w-none space-y-6 text-[#7A4A1A] text-base leading-relaxed">
+        {/* Image Section */}
+        <div className="relative h-64 w-full overflow-hidden rounded-2xl shadow-lg md:h-96">
+          <Image
+            src="/images/Couple Counseling.jpg"
+            alt="Couple counseling session - partners strengthening their bond and building understanding together"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#562F00]/40 to-transparent" />
+        </div>
+
+        <div className="space-y-6 text-[#7A4A1A] text-base leading-relaxed">
           <p>
             In today&apos;s fast-paced, digital world, relationships often face
             challenges that can feel overwhelming. As technology brings us

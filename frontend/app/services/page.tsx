@@ -19,7 +19,7 @@ const SERVICES = [
     desc: "Support for partners navigating conflict, communication issues, trust, and emotional distance.",
     image: "/images/Couple Counseling.jpg",
   },
-  {
+  { 
     title: "Family Counseling",
     slug: "FamilyCounseling",
     desc: "Facilitated conversations to heal patterns, improve understanding, and restore connection at home.",

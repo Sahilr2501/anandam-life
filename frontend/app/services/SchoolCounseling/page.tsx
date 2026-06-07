@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SchoolCounselingPage() {
   return (
@@ -20,7 +21,19 @@ export default function SchoolCounselingPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
-        <div className="prose prose-[#7A4A1A] max-w-none space-y-6 text-[#7A4A1A] text-base leading-relaxed">
+        {/* Image Section */}
+        <div className="relative h-64 w-full overflow-hidden rounded-2xl shadow-lg md:h-96">
+          <Image
+            src="/images/School Counseling.jpg"
+            alt="School counseling session - nurturing young minds for a bright future"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#562F00]/40 to-transparent" />
+        </div>
+
+        <div className="space-y-6 text-[#7A4A1A] text-base leading-relaxed">
           <div className="rounded-2xl bg-[#FFF7EB] border border-[#FFCE99]/40 p-6 sm:p-8">
             <h2 className="text-xl font-semibold text-[#2F1500] mb-4">
               School Psychology & Project Utkarsh
@@ -42,7 +55,7 @@ export default function SchoolCounselingPage() {
           </div>
 
           <div className="border-t border-[#FFCE99]/30 pt-8">
-            <h2 className="text-xl font-semibold text-[#2F1500] mb-4 not-prose">
+            <h2 className="text-xl font-semibold text-[#2F1500] mb-4">
               School Counseling: Nurturing Young Minds for a Bright Future
             </h2>
             <p>
@@ -70,7 +83,7 @@ export default function SchoolCounselingPage() {
               early on, we help young minds grow into confident, well-rounded
               individuals prepared for the future.
             </p>
-            <p className="font-medium text-[#2F1500] not-prose mt-6">
+            <p className="font-medium text-[#2F1500] mt-6">
               Let&apos;s work together to create a supportive learning space for
               your students!
             </p>

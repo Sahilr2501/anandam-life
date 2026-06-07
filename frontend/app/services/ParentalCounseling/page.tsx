@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ParentalCounselingPage() {
   return (
@@ -20,7 +21,19 @@ export default function ParentalCounselingPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
-        <div className="prose prose-[#7A4A1A] max-w-none space-y-6 text-[#7A4A1A] text-base leading-relaxed">
+        {/* Image Section */}
+        <div className="relative h-64 w-full overflow-hidden rounded-2xl shadow-lg md:h-96">
+          <Image
+            src="/images/Parental Counseling.jpg"
+            alt="Parental counseling session - empowering parents to build stronger bonds with their children"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#562F00]/40 to-transparent" />
+        </div>
+
+        <div className="space-y-6 text-[#7A4A1A] text-base leading-relaxed">
           <p>
             Parenting comes with its challenges, and every parent deserves the
             right guidance and support. ANANDAM&apos;s Parental Counseling services
